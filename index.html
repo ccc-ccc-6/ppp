@@ -3,158 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1-2 直線排列 - 高職數學自學網</title>
+    <title>1-2 直線排列 | 高職數學自學網</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
-        body { font-family: 'Microsoft JhengHei', sans-serif; }
-        .math-card { background: #f9fafb; border-left: 4px solid #3b82f6; }
+        .math-box { border-left: 5px solid #3b82f6; background-color: #f8fafc; }
+        .step-badge { background-color: #3b82f6; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.9rem; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-slate-50 text-gray-800 leading-relaxed">
 
-    <nav class="bg-blue-600 p-4 text-white shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-bold">高職數學自學教室</h1>
+    <nav class="bg-indigo-700 text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <span class="text-xl font-bold tracking-tight">數學教室 1-2</span>
             <div class="space-x-4">
-                <a href="#intro" class="hover:underline">觀念引進</a>
-                <a href="#formula" class="hover:underline">排列公式</a>
-                <a href="#calculator" class="hover:underline">計算工具</a>
+                <a href="#intro" class="hover:text-indigo-200 transition">引進</a>
+                <a href="#formula" class="hover:text-indigo-200 transition">公式</a>
+                <a href="#example" class="hover:text-indigo-200 transition">例題</a>
             </div>
         </div>
     </nav>
 
-    <header class="bg-white py-12 border-b">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-extrabold text-blue-800 mb-4">第一章 1-2 直線排列</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto">
-                本章節將帶你了解如何計算「排列方式」。從奧運五環的顏色排列，到數字的組合，讓我們一步步掌握排列組合的精髓。
-            </p>
-        </div>
-    </header>
-
-    <main class="container mx-auto px-4 py-8">
+    <main class="container mx-auto px-4 py-10 max-w-4xl">
         
-        <section id="intro" class="mb-12">
-            <h3 class="text-2xl font-bold mb-4 border-b-2 border-blue-200 pb-2">💡 觀念引進：奧運五環</h3>
-            <div class="grid md:grid-cols-2 gap-8 items-center">
-                <div>
+        <header class="text-center mb-16">
+            <h1 class="text-4xl font-extrabold text-indigo-900 mb-4">第一章 1-2 直線排列</h1>
+            <p class="text-gray-500 italic">適用於高職工科/商科學生自學</p>
+        </header>
+
+        <section id="intro" class="mb-12 bg-white p-8 rounded-2xl shadow-sm">
+            <h2 class="text-2xl font-bold text-indigo-800 mb-6 flex items-center">
+                <span class="mr-2">💡</span> 觀念引進：奧運五環
+            </h2>
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="flex-1">
                     <p class="mb-4 text-lg">
-                        奧運五環標誌由紅、黑、藍、綠、黃五種顏色組成。
-                        <strong>想一想：</strong>如果這 5 個環的位置可以互換，總共有多少種不同的排列方式？
+                        奧運五環象徵五大洲的團結，顏色分別為紅、黑、藍、綠、黃。
                     </p>
-                    <div class="math-card p-4 rounded-lg italic">
-                        由於這 5 個環顏色均不同，排列方式相當於「5 個相異物的直線排列」：
-                        <div class="text-center text-2xl my-2 text-blue-700">
-                            \( 5! = 5 \times 4 \times 3 \times 2 \times 1 = 120 \) 種
-                        </div>
+                    <div class="math-box p-4 rounded-r-lg italic">
+                        <strong>想一想：</strong> 若 5 個環的位置可以任意互換，共有多少種排列方式？
+                        <p class="mt-4 not-italic text-indigo-700">
+                            根據教材，這相當於 5 個相異物的直線排列，計算如下：
+                            $$ 5! = 5 \times 4 \times 3 \times 2 \times 1 = 120 \text{ (種)} $$
+                        </p>
                     </div>
-                </div>
-                <div class="bg-gray-200 h-48 rounded-lg flex items-center justify-center text-gray-500">
-                    [奧運五環示意圖]
                 </div>
             </div>
         </section>
 
-        <section id="formula" class="mb-12">
-            <h3 class="text-2xl font-bold mb-4 border-b-2 border-blue-200 pb-2">📝 重點筆記</h3>
+        <section id="formula" class="mb-12 bg-white p-8 rounded-2xl shadow-sm">
+            <h2 class="text-2xl font-bold text-indigo-800 mb-6 flex items-center">
+                <span class="mr-2">📝</span> 排列定義與公式
+            </h2>
             
-            <div class="space-y-6">
-                <div class="bg-white p-6 rounded shadow">
-                    <h4 class="font-bold text-blue-600 mb-2">1. 階乘的定義</h4>
-                    <p>當 \( n \) 為正整數時，從 1 連乘到 \( n \) 的乘積稱為 \( n \) 的階乘，記作 \( n! \)。</p>
-                    <p class="mt-2 bg-gray-50 p-2 font-mono">\( n! = n \times (n-1) \times \dots \times 1 \)</p>
-                    <p class="mt-1 text-sm text-red-500">＊規定 \( 0! = 1 \)</p>
+            <div class="space-y-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-2 text-indigo-600">1. 階乘的定義 ($n!$)</h3>
+                    <p>當 $n$ 為正整數時，從 1 連乘到 $n$ 的積，稱為 $n$ 的階乘：</p>
+                    <div class="bg-slate-100 p-4 text-center text-xl my-3 rounded">
+                        $$ n! = n \times (n-1) \times (n-2) \times \dots \times 1 $$
+                    </div>
+                    <p class="text-sm text-red-600 font-semibold italic">＊特別規定：$0! = 1$</p>
                 </div>
 
-                <div class="bg-white p-6 rounded shadow">
-                    <h4 class="font-bold text-blue-600 mb-2">2. 相異物排列公式 \( P^n_r \)</h4>
-                    <p>從 \( n \) 個不同的事物中，取出 \( r \) 個排成一列的總數：</p>
-                    <div class="text-center text-xl my-4">
-                        \( P^n_r = \frac{n!}{(n-r)!} = n \times (n-1) \times \dots \times (n-r+1) \)
+                <div>
+                    <h3 class="font-bold text-lg mb-2 text-indigo-600">2. 相異物的直線排列 ($P^n_r$)</h3>
+                    <p>從 $n$ 個不同的事物中，取出 $r$ 個排成一列的總數：</p>
+                    <div class="bg-indigo-50 p-6 text-center text-2xl my-3 rounded-lg border border-indigo-100">
+                        $$ P^n_r = \frac{n!}{(n-r)!} $$
                     </div>
-                    <ul class="list-disc ml-6 text-gray-700">
-                        <li>當 \( r=n \) 時，\( P^n_n = n! \)</li>
-                        <li>首位不可排 0（例如：四位數題目）</li>
+                    <ul class="list-disc ml-6 mt-4 text-gray-700 space-y-2">
+                        <li>當全部取完時 ($r=n$)：$P^n_n = n!$</li>
+                        <li>公式展開：$P^n_r = n \times (n-1) \times \dots \times (n-r+1)$</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section id="calculator" class="mb-12">
-            <div class="bg-blue-50 p-8 rounded-xl border border-blue-100 shadow-inner">
-                <h3 class="text-2xl font-bold mb-6 text-center text-blue-800">🔢 線上排列計算機</h3>
-                <div class="flex flex-col md:flex-row justify-center items-center gap-4">
-                    <div class="flex items-center">
-                        <span class="mr-2 text-xl font-serif italic text-gray-600">P</span>
-                        <div class="flex flex-col">
-                            <input id="inputN" type="number" placeholder="n" class="w-16 p-2 border rounded mb-1" min="0">
-                            <input id="inputR" type="number" placeholder="r" class="w-16 p-2 border rounded" min="0">
-                        </div>
+        <section id="example" class="mb-12 bg-white p-8 rounded-2xl shadow-sm border-t-4 border-indigo-500">
+            <h2 class="text-2xl font-bold text-indigo-800 mb-6 flex items-center">
+                <span class="mr-2">🎯</span> 教材例題詳解
+            </h2>
+            
+            <div class="mb-8 p-6 border rounded-xl">
+                <p class="text-lg font-medium mb-4 text-gray-800">
+                    <strong>例題：</strong> 用 $0, 1, 2, 3$ 四個數字排成一個「數字不重複」的四位數，共有多少個？
+                </p>
+                
+                <div class="space-y-4">
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <span class="step-badge">解法一：乘法原理</span>
+                        <ol class="list-decimal ml-6 mt-2 space-y-2 text-gray-700">
+                            <li>首位不可排 $0$，故千位數可從 $\{1, 2, 3\}$ 中選一個，有 $P^3_1$ 種方法。</li>
+                            <li>剩餘 3 個位置由剩下的 3 個數字排入，有 $P^3_3$ 種方法。</li>
+                            <li>由乘法原理知：$P^3_1 \times P^3_3 = 3 \times (3 \times 2 \times 1) = 18$ 個。</li>
+                        </ol>
                     </div>
-                    <button onclick="calculateP()" class="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition font-bold">計算結果</button>
-                    <div class="text-3xl font-bold text-blue-900 ml-4">
-                        = <span id="calcResult">?</span>
+
+                    <div class="bg-orange-50 p-4 rounded-lg">
+                        <span class="step-badge" style="background-color: #f59e0b;">解法二：反面思考</span>
+                        <p class="mt-2 text-gray-700">
+                            全部排列數 $-$ $0$ 排首位的排法：
+                            $$ P^4_4 - P^3_3 = 4! - 3! = 24 - 6 = 18 \text{ (個)} $$
+                        </p>
                     </div>
                 </div>
-                <p id="calcError" class="text-red-500 text-center mt-4 hidden">請確認 n ≧ r 且皆為正整數</p>
             </div>
         </section>
 
-        <section id="quiz" class="mb-12">
-            <h3 class="text-2xl font-bold mb-4 border-b-2 border-blue-200 pb-2">🎯 自我挑戰題</h3>
-            <div class="bg-white p-6 rounded shadow border-l-4 border-green-500">
-                <p class="text-lg"><strong>題目：</strong>用 0, 1, 2, 3 四個數字排成一個「四位數」（數字不重複），共有多少個？</p>
-                <details class="mt-4 group">
-                    <summary class="cursor-pointer text-blue-600 font-bold">點擊查看解題思路</summary>
-                    <div class="mt-4 p-4 bg-green-50 rounded">
-                        <ol class="list-decimal ml-6 space-y-2">
-                            <li><strong>第一步：</strong>首位不能為 0，所以千位數只能選 1, 2, 3，共有 \( P^3_1 = 3 \) 種選法。</li>
-                            <li><strong>第二步：</strong>剩下的 3 個數字排在後三位，共有 \( 3! = 6 \) 種選法。</li>
-                            <li><strong>結果：</strong>根據乘法原理，共有 \( 3 \times 6 = 18 \) 個。</li>
-                        </ol>
+        <section class="mb-12 text-center">
+            <div class="bg-indigo-900 text-white p-10 rounded-3xl shadow-xl">
+                <h2 class="text-2xl font-bold mb-6">快速計算 $P^n_r$</h2>
+                <div class="flex flex-wrap justify-center items-center gap-4">
+                    <div class="text-3xl font-serif">P</div>
+                    <div class="flex flex-col gap-1">
+                        <input id="nInput" type="number" placeholder="n" class="w-20 p-2 rounded text-black text-center" min="0">
+                        <input id="rInput" type="number" placeholder="r" class="w-20 p-2 rounded text-black text-center" min="0">
                     </div>
-                </details>
+                    <button onclick="calcPermutation()" class="bg-yellow-500 hover:bg-yellow-400 text-indigo-900 font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
+                        計算結果
+                    </button>
+                    <div class="text-3xl font-bold ml-4 text-yellow-400">
+                        = <span id="resultDisplay">?</span>
+                    </div>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p>高職數學 1-2 直線排列 - 自學教材</p>
-            <p class="text-gray-400 text-sm mt-2">教材來源：第一章 直線排列 教師用書</p>
-            <div class="mt-4">
-                <a href="#" class="text-blue-400 hover:underline">返回 GitHub 倉庫</a>
+    <footer class="bg-slate-800 text-slate-400 py-12 text-center">
+        <div class="container mx-auto px-4">
+            <p class="mb-2">1-2 直線排列 自學網頁</p>
+            <p class="text-sm">內容參考自：第一章 1-2 直線排列-教師用書</p>
+            <div class="mt-6">
+                <a href="https://github.com" target="_blank" class="text-indigo-400 hover:underline">View on GitHub</a>
             </div>
         </div>
     </footer>
 
     <script>
-        function factorial(num) {
-            if (num < 0) return -1;
+        function fact(num) {
+            if (num < 0) return 0;
             if (num === 0) return 1;
             let res = 1;
             for (let i = 1; i <= num; i++) res *= i;
             return res;
         }
 
-        function calculateP() {
-            const n = parseInt(document.getElementById('inputN').value);
-            const r = parseInt(document.getElementById('inputR').value);
-            const errorElement = document.getElementById('calcError');
-            const resultElement = document.getElementById('calcResult');
+        function calcPermutation() {
+            const n = parseInt(document.getElementById('nInput').value);
+            const r = parseInt(document.getElementById('rInput').value);
+            const display = document.getElementById('resultDisplay');
 
             if (isNaN(n) || isNaN(r) || n < r || n < 0 || r < 0) {
-                errorElement.classList.remove('hidden');
-                resultElement.innerText = "?";
+                alert("請輸入正確的 n 與 r 值 (n 需大於等於 r)");
                 return;
             }
 
-            errorElement.classList.add('hidden');
-            const result = factorial(n) / factorial(n - r);
-            resultElement.innerText = result.toLocaleString();
+            const result = fact(n) / fact(n - r);
+            display.innerText = result.toLocaleString();
         }
     </script>
 </body>
